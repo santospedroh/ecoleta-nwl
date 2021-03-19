@@ -34,9 +34,6 @@ O Ecoleta é um site de criação e buscagem de pontos de coletas de resíduos p
 
 ### Start node Server
 
-1. Para iniciar o servidor local e executar o projeto basta executar o comando :
-	$ `npm start`
-	
+1. Para iniciar o servidor local execute o comando : $ `npm start`	
 2. Abra o navegador web e acesse: <http://localhost:3000>
-
 3. Pronto, aplicação executando!
