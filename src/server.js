@@ -3,7 +3,7 @@ const express = require("express")
 const server = express()
 
 // pegar banco de dados
-const db = require("./database/db")
+const con = require("./database/db")
 
 // configurando pasta publica
 server.use(express.static("public"))
@@ -77,7 +77,8 @@ server.post("/save-point", (req, res) => {
         return res.render("create-point.html", {saved: true})
     }
 
-    db.run(query, values, afterInsertDate)
+    //db.run(query, values, afterInsertDate)
+    con.query(query, values, afterInsertDate)
 
 })
 
@@ -92,18 +93,20 @@ server.get("/search", (req, res) => {
     }
 
     // pegar os dados do banco de dados
-    db.all(`SELECT * FROM places WHERE city LIKE '%${search}%'`, function(err, rows) {
-        if(err) {
-            return console.log(err)
+    con.query(`SELECT * FROM places WHERE city LIKE '%${search}%'`, function (err, result) {
+        if (err) {
+            console.error('error connecting: ' + err.stack);
+            return;
         }
-        //console.log("Aqui estão seus registros: ")
-        //console.log(rows)
+        console.log("Aqui estão seus registros: ")
+        console.log(result)
 
-        const total = rows.length
+        const total = result.length
 
         // mostrar a página html com os dados do banco de dados
-        return res.render("search-results.html", {places: rows, total: total})
+        return res.render("search-results.html", {places: result, total: total})
     })
+
  })
 
 // ligar o servidor

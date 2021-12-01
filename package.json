@@ -5,10 +5,12 @@
   },
   "dependencies": {
     "express": "^4.17.1",
+    "mysql": "^2.18.1",
+    "mysql-migrations": "^1.0.7",
     "nunjucks": "^3.2.1",
     "sqlite3": "^4.2.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.15"
   }
 }
