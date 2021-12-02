@@ -26,23 +26,31 @@ O Ecoleta é um site de criação e buscagem de pontos de coletas de resíduos p
 
 ### Dependências do Node.js
 
-1. Express: `npm install express`
-2. Nodemon: `npm install nodemon`
-3. Nunjucks: `npm install nunjucks`
-4. MySQL: `npm install mysql`
-5. Migrations: `npm install mysql-migrations`
+1. Express: $ `npm install express`
+2. Nodemon: $ `npm install nodemon`
+3. Nunjucks: $ `npm install nunjucks`
+4. MySQL: $ `npm install mysql`
+5. Migrations: $ `npm install mysql-migrations`
 
-### Banco de dados MySQL Localhost via Docker
+## Executando  🚀
 
-1. MySQL5.6: `docker run -p 3306:3306 --name mysql -e MYSQL_ROOT_PASSWORD=rootpass -e MYSQL_USER=db_user -e MYSQL_PASSWORD=db_pass -e MYSQL_DATABASE=nlwecoleta -d mysql:5.6.51`
-2. Migration: `node src/migration.js up`
+## Subindo na mão os dois containers
 
-## Executando 🚀
+### Docker containet MySQL
 
-### Start node Server
+1. Executar o container do MySQL5.6: $ `docker run --rm -p 3306:3306 --name mysql --net=my-net -e MYSQL_ROOT_PASSWORD=rootpass -e MYSQL_USER=db_user -e MYSQL_PASSWORD=db_pass -e MYSQL_DATABASE=nlwecoleta -d mysql:5.6.51`
+2. Executar a migration para criar a base de dados: $ `node src/migration.js up`
 
-1. Para iniciar o servidor local execute o comando : $ `npm start`	
-2. Abra o navegador web e acesse: <http://localhost:3000>
+### Docker container Application
+
+1. Fazer o build da imagem docker: $ `docker build -t nlw-ecoleta:latest .`
+2. Para iniciar a aplicação execute o comando : $ `docker run --rm -p 8000:8000 --name ecoleta --net=my-net -e HOSTDB=mysql -e USERDB=root -e PASSDB=rootpass -e SCHEDB=nlwecoleta -d nlw-ecoleta:latest`	
+3. Abra o navegador web e acesse: <http://localhost:8000>
+4. Pronto, aplicação executando!
+
+## Subindo tudo de uma vez com Docker-Compose
+1. Executar: $ `docker-compose up`
+2. Abra o navegador web e acesse: <http://localhost:8000>
 3. Pronto, aplicação executando!
 
 ---

@@ -2,6 +2,10 @@
 const express = require("express")
 const server = express()
 
+// host - port
+const port = 8000
+const host = "0.0.0.0"
+
 // pegar banco de dados
 const con = require("./database/db")
 
@@ -37,7 +41,7 @@ server.get("/create-point", (req, res) => {
     return res.render("create-point.html")   
 
 })
-
+// rota save-point
 server.post("/save-point", (req, res) => {
     
     //req.body: O corpo do form
@@ -110,4 +114,5 @@ server.get("/search", (req, res) => {
  })
 
 // ligar o servidor
-server.listen(3000)
+server.listen(port, host)
+console.log(`Running on http://${host}:${port}`)
