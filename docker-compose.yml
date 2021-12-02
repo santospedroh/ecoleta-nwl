@@ -21,7 +21,7 @@ services:
     build: 
       context: .
       dockerfile: Dockerfile
-    image: ecoleta:lastest
+    image: ecoleta:latest
     container_name: ecoleta-app
     restart: unless-stopped
     environment: 
