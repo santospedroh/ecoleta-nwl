@@ -8,11 +8,12 @@ O Ecoleta é um site de criação e buscagem de pontos de coletas de resíduos p
 ## Tecnologias usadas 👨‍💻
 
 - Node.js
+- Docker
 - NPM
   - Express
   - Nodemon
   - Nunjucks
-  - SQLite3
+  - MySQL
 
 ## Instalação 🛠
 
@@ -31,7 +32,7 @@ O Ecoleta é um site de criação e buscagem de pontos de coletas de resíduos p
 4. MySQL: `npm install mysql`
 5. Migrations: `npm install mysql-migrations`
 
-### Banco de dados MySQL via Docker
+### Banco de dados MySQL Localhost via Docker
 
 1. MySQL5.6: `docker run -p 3306:3306 --name mysql -e MYSQL_ROOT_PASSWORD=rootpass -e MYSQL_USER=db_user -e MYSQL_PASSWORD=db_pass -e MYSQL_DATABASE=nlwecoleta -d mysql:5.6.51`
 2. Migration: `node src/migration.js up`
